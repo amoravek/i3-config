@@ -219,7 +219,10 @@ bindsym $mod+BackSpace mode "$mode_system"
 # The locker must be no forking, you must pass the no fork (-n) flag to i3lock here
 exec --no-startup-id /usr/bin/xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -- $Locker -n
 
-bindsym $sup+s exec rofi -show ssh
+bindsym $mod+shift+s exec rofi -show ssh
+bindsym $mod+i exec i3-input
+
+bindsym $mod+l exec xdg-open "$(locate -P -b -i -n 10 home media | rofi -threads 0 -width 100 -dmenu -i -p "locate:")"
 
 #walpaper
 exec --no-startup-id feh --bg-scale /etc/i3/i3wm.png
