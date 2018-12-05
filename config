@@ -10,6 +10,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $alt Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -223,6 +224,10 @@ bindsym $mod+shift+s exec rofi -show ssh
 bindsym $mod+i exec i3-input
 
 bindsym $mod+l exec xdg-open "$(locate -P -b -i -n 10 home media | rofi -threads 0 -width 100 -dmenu -i -p "locate:")"
+
+bindsym Print exec scrot $HOME/Pictures/ScreenShoots/`date +%Y-%m-%d_%H:%M:%S`.png
+
+bindsym $alt+Control+h exec caja
 
 #walpaper
 exec --no-startup-id feh --bg-scale /etc/i3/i3wm.png
