@@ -232,6 +232,6 @@ bindsym $alt+Control+h exec caja
 #walpaper
 exec --no-startup-id feh --bg-scale /etc/i3/i3wm.png
 
-exec "setxkbmap -layout us,cz"
-exec "setxkbmap -option 'grp:alt_shift_toggle'"
-
+#exec --no-startup-id "setxkbmap -layout us,cz"
+#exec --no-startup-id "setxkbmap -option 'grp:alt_shift_toggle'"
+exec --no-startup-id setxkbmap -layout us,cz -option grp:alt_shift_toggle
