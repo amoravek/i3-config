@@ -177,10 +177,6 @@ bindsym $mod+r mode "resize"
 
 ######################################################
 
-# Sreen brightness controls
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
-
 # increase brightness
 bindsym XF86MonBrightnessUp exec "light -A 5"
 
@@ -198,6 +194,31 @@ bindsym $mod+d exec rofi -show run -eh 2 -padding 4
 
 # Touchpad controls
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
+
+
+# Set here your locker
+# If you use a wrapper, make sure that it accepts the no fork(-n) flag
+set $Locker /usr/bin/i3lock --ignore-empty-password --color=004354
+
+set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+mode "$mode_system" {
+    bindsym l exec --no-startup-id $Locker && sleep 1, mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym s exec --no-startup-id $Locker && sleep 1 && systemctl suspend, mode "default"
+    bindsym h exec --no-startup-id $Locker && sleep 1 && systemctl hibernate, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id  systemctl poweroff -i, mode "default"
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $mod+BackSpace mode "$mode_system"
+
+# Autostart xss-lock session daemon
+# Automatically locks your screen before suspend/hibernation and after being idle for some time. Specify the time with xset if needed.
+# The locker must be no forking, you must pass the no fork (-n) flag to i3lock here
+exec --no-startup-id /usr/bin/xss-lock -n /usr/share/doc/xss-lock/dim-screen.sh -- $Locker -n
 
 ######################################################
 
