@@ -186,7 +186,7 @@ bindsym XF86MonBrightnessDown exec "light -U 5"
 set $alt Mod1
 bindsym $alt+Control+h exec "nautilus --new-window"
 
-exec --no-startup-id setxkbmap -layout us,cz -option grp:alt_shift_toggle
+exec --no-startup-id setxkbmap -layout us,cz -option grp:lalt_lshift_toggle
 
 bindsym Print exec scrot $HOME/pictures/screenshots/`date +%Y-%m-%d_%H:%M:%S`.png
 
